@@ -1,0 +1,105 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    width: 100%;
+    font-family: var(--font-family-body);
+}
+
+.label {
+    display: block;
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.description {
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
+    color: var(--color-text-secondary);
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: var(--border-width-s) solid var(--color-border-input);
+    border-radius: var(--radius-s);
+    background-color: var(--color-bg-input);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0 var(--spacing-s);
+    height: var(--size-4xl);
+    /* Assuming height based on spacing/sizing tokens, or just minimal padding vertical */
+    box-sizing: border-box;
+}
+
+.inputContainer:focus-within {
+    border-color: var(--color-border-active);
+    outline: none;
+    /* box-shadow: 0 0 0 2px var(--color-border-active); Optional for better focus visibility */
+}
+
+/* Error state */
+.inputContainer[data-error="true"] {
+    border-color: var(--color-error);
+}
+
+/* Disabled state */
+.inputContainer.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-surface-alternate);
+    /* or some disabled bg */
+    border-color: var(--color-border-default);
+}
+
+.input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: var(--spacing-s) 0;
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-s);
+    color: var(--color-text-primary);
+    outline: none;
+    min-width: 0;
+}
+
+.input::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+.input:disabled {
+    cursor: not-allowed;
+    color: var(--color-text-secondary);
+}
+
+.leading,
+.trailing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    /* or tertiary? */
+}
+
+.leading {
+    margin-right: var(--spacing-xs);
+}
+
+.trailing {
+    margin-left: var(--spacing-xs);
+}
+
+.helperText {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    color: var(--color-text-secondary);
+}
+
+.helperText[data-error="true"] {
+    color: var(--color-error);
+}

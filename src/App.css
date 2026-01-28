@@ -1,0 +1,12 @@
+/* Clean slate for the demo app, delegating reset to index.css and component styles */
+h1,
+h2 {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+section {
+  border: 1px solid var(--color-border-default);
+  padding: 24px;
+  border-radius: var(--radius-m);
+}

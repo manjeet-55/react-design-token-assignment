@@ -1,0 +1,26 @@
+{
+  "shadow": {
+    "s": {
+      "$type": "boxShadow",
+      "$value": {
+        "x": "0",
+        "y": "4",
+        "blur": "16",
+        "spread": "0",
+        "color": "{bg.subdued-strong}",
+        "type": "dropShadow"
+      }
+    },
+    "m": {
+      "$type": "boxShadow",
+      "$value": {
+        "x": "0",
+        "y": "24",
+        "blur": "48",
+        "spread": "0",
+        "color": "{bg.subdued-strong}",
+        "type": "dropShadow"
+      }
+    }
+  }
+}
