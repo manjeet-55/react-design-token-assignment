@@ -162,7 +162,7 @@
         "$type": "border",
         "$value": {
           "color": "{border.active}",
-          "width": "{borderWidth.s}",
+          "width": "{borderWidth.m}",
           "style": "solid"
         }
       },
@@ -170,7 +170,7 @@
         "$type": "border",
         "$value": {
           "color": "{border.negative}",
-          "width": "{borderWidth.l}",
+          "width": "{borderWidth.s}",
           "style": "solid"
         }
       }

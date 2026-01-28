@@ -1,90 +1,71 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Input from "./components/Input/Input";
+import { useTheme } from "./contexts/ThemeContext";
 import "./App.css";
+import { LeftIcon } from "./icons/LeftIcon";
+import SearchIcon from "./icons/SearchIcon";
+import InfoIcon from "./icons/InfoIcon";
 
 function App() {
   const [value, setValue] = useState("");
-  const [theme, setTheme] = useState("dark");
+  const { theme, tokens, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  const appStyles = {
+    maxWidth: "600px",
+    margin: "0 auto",
+    padding: "40px",
+    backgroundColor: tokens.bg.default,
+    color: tokens.content.primary,
+    minHeight: "100vh",
   };
 
-  // Placeholder icons for demo
-  const SearchIcon = () => (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
+  const headerStyles = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20px",
+  };
 
-  const InfoIcon = () => (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="12" y1="16" x2="12" y2="12" />
-      <line x1="12" y1="8" x2="12.01" y2="8" />
-    </svg>
-  );
+  const buttonStyles = {
+    padding: "8px 16px",
+    borderRadius: tokens.borderRadius.input,
+    border: `${tokens.borderWidth.s} solid ${tokens.border.input}`,
+    background: tokens.bg["default-strong"],
+    color: tokens.content.primary,
+    cursor: "pointer",
+    fontFamily: tokens.fontFamilies.body,
+    fontSize: tokens.fontSizes.s,
+  };
+
+  const sectionStyles = {
+    marginBottom: "32px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "24px",
+  };
+
+  const headingStyles = {
+    color: tokens.content.primary,
+    fontFamily: tokens.fontFamilies.body,
+  };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "40px" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "20px",
-        }}
-      >
-        <h1>Input Component Demo</h1>
-        <button
-          onClick={toggleTheme}
-          style={{
-            padding: "8px 16px",
-            borderRadius: "8px",
-            border: "1px solid var(--color-border-default)",
-            background: "var(--color-surface-alternate)",
-            color: "var(--color-text-primary)",
-            cursor: "pointer",
-          }}
-        >
-          Switch to {theme === "dark" ? "Light" : "Dark"} Mode
+    <div style={appStyles}>
+      <div style={headerStyles}>
+        <h1 style={headingStyles}>Input Component Demo</h1>
+        <button onClick={toggleTheme} style={buttonStyles}>
+          Switch to {theme === "light" ? "Dark" : "Light"} Mode
         </button>
       </div>
 
-      <section
-        style={{
-          marginBottom: "32px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "24px",
-        }}
-      >
-        <h2>States</h2>
+      <section style={sectionStyles}>
+        <h2 style={headingStyles}>States</h2>
 
-        <Input label="Default" placeholder="Placeholder text" />
+        <Input
+          label="Default"
+          placeholder="Placeholder text"
+          leading={<LeftIcon />}
+        />
 
         <Input
           label="Disabled"
@@ -92,6 +73,7 @@ function App() {
           placeholder="Cannot type here"
           value="Disabled value"
           onChange={() => {}}
+          leading={<LeftIcon />}
         />
 
         <Input
@@ -99,24 +81,19 @@ function App() {
           error="This field has an error"
           placeholder="Error placeholder"
           defaultValue="Invalid input"
+          leading={<LeftIcon />}
         />
 
         <Input
           label="With Helper Text"
           helperText="This is some helpful text."
           placeholder="Start typing..."
+          leading={<LeftIcon />}
         />
       </section>
 
-      <section
-        style={{
-          marginBottom: "32px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "24px",
-        }}
-      >
-        <h2>Accessories</h2>
+      <section style={sectionStyles}>
+        <h2 style={headingStyles}>Accessories</h2>
 
         <Input
           label="Leading Icon"
@@ -138,15 +115,8 @@ function App() {
         />
       </section>
 
-      <section
-        style={{
-          marginBottom: "32px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "24px",
-        }}
-      >
-        <h2>Full Example</h2>
+      <section style={sectionStyles}>
+        <h2 style={headingStyles}>Full Example</h2>
 
         <Input
           label="Email Address"

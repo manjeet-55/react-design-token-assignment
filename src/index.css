@@ -1,83 +1,3 @@
-:root {
-  /* Common tokens */
-  --radius-xs: 8px;
-  --radius-s: 12px;
-  --radius-m: 16px;
-
-  --spacing-xs: 8px;
-  --spacing-s: 12px;
-  --spacing-m: 16px;
-
-  --size-4xl: 48px;
-  --border-width-s: 1px;
-  --font-weight-medium: 500;
-  --font-family-body: 'TT Plugsurfing', sans-serif;
-  --font-size-s: 14px;
-  --line-height-s: 16px;
-  --font-size-xs: 12px;
-  --line-height-xs: 14px;
-}
-
-/* Dark Theme (Default) */
-:root,
-[data-theme="dark"] {
-  --color-surface-default: #121217;
-  --color-surface-alternate: #202025;
-  --color-text-primary: #f4f4f9;
-  --color-text-secondary: #c6c6cb;
-  --color-text-tertiary: #7d7d83;
-  --color-border-default: #323237;
-  --color-border-input: #a8a8ad;
-  --color-border-active: #3773ff;
-  --color-error: #d32e2f;
-  --color-bg-input: #121217;
-}
-
-/* Light Theme */
-[data-theme="light"] {
-  --color-surface-default: #ffffff;
-  /* neutral.0 */
-  --color-surface-alternate: #f4f4f9;
-  /* neutral.5 */
-
-  --color-text-primary: #121217;
-  /* neutral.95 (black) but inverted? content.primary = neutral.95 in Light.json? Wait. */
-  /* Re-reading Light.json: 
-     content.primary value: {neutral.95} -> grey.light.95 -> #121217. Correct. Dark text. */
-  --color-text-primary: #121217;
-
-  --color-text-secondary: #47474c;
-  /* content.secondary -> neutral.70 -> grey.light.70 -> #47474c */
-  --color-text-tertiary: #7d7d83;
-  /* content.tertiary -> neutral.50 -> grey.light.50 -> #7d7d83 */
-
-  --color-border-default: #dddde2;
-  /* border.default -> neutral.light.alpha-20 -> grey.light.20 -> #dddde2 (approx) */
-  --color-border-input: #a8a8ad;
-  /* border.input -> neutral.40 -> grey.light.40 -> #a8a8ad */
-
-  --color-border-active: #2b61e2;
-  /* border.active -> accent.light.active -> brand.light.50 -> #2b61e2 */
-
-  --color-error: #f56566;
-  /* negative -> negative.light.60 -> red.light.70? Light.json says negative.light.60. Core.json red.light.60 -> #d63738. Wait. 
-     Light.json: "negative": { "$value": "{negative.light.60}" }
-     Alias.json: "negative": "light" "60": "{red.light.70}".
-     Core.json: "red": "light" "70": "#b62f30".
-     Actually let's check negative.light.50 in Alias -> red.light.60 -> #d63738.
-     Let's stick to a solid red for error. #d32e2f is standard material red. 
-     Let's map correctly:
-     Light.json negative -> negative.light.60.
-     Alias.json negative.light.60 -> red.light.70.
-     Core.json red.light.70 -> #b62f30.
-     So it is #b62f30.
-  */
-  --color-error: #b62f30;
-
-  --color-bg-input: #ffffff;
-  /* bg.default -> neutral.0 */
-}
-
 @font-face {
   font-family: 'TT Plugsurfing';
   src: url('/TT Plugsurfing/TT Plugsurfing/WOFF2/TT Plugsurfing WOFF2 1-000/TT_Plugsurfing_Regular.woff2') format('woff2');
@@ -101,9 +21,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family-body);
-  background-color: var(--color-surface-default);
-  color: var(--color-text-primary);
+  font-family: 'TT Plugsurfing', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
